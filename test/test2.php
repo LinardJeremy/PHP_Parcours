@@ -1,0 +1,1 @@
+<img src="cat2.gif">
