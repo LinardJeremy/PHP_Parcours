@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset='utf-8'>
+<meta charset="UTF-8">
 <link rel="stylesheet" href="style.css">
 <title> Générateur d'excuse ! </title>
 </head>
@@ -51,7 +51,8 @@
               $pronom = "il";
 
           }
-            
+          setlocale(LC_TIME, 'fra_fra');
+          echo '<p> Fait le ', strftime('%A %d %B %Y'),'.</p>';
           echo '<p>Monsieur/Madame   ',$nameTeacher,'</p>';
           echo "<p>", $determinant," ",$gender," ",$nameChild, "  élève dans votre collège, ne pourra pas assister au cours aujourd'hui.";
           if ($reason == "illness") {
