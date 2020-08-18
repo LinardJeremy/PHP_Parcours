@@ -1,0 +1,17 @@
+body{
+    background-color: lightblue;
+}
+h1 {
+    text-align: center;
+    font-size: 4rem;
+    margin-bottom: 3rem;
+}
+.sectionForm {
+    text-align: center;
+}
+.sectionP {
+    text-align: center;
+    border: solid black 2px;
+    background-color: white;
+    margin-top: 3rem;
+}
