@@ -52,8 +52,8 @@
 
           }
           setlocale(LC_TIME, 'fra_fra');
-          echo '<p> Fait le ', strftime('%A %d %B %Y'),'.</p>';
-          echo '<p>Monsieur/Madame   ',$nameTeacher,'</p>';
+          echo '<p class="do"> Fait le ', strftime('%A %d %B %Y'),'.</p>';
+          echo '<p class="do">Monsieur/Madame   ',$nameTeacher,'.</p>';
           echo "<p>", $determinant," ",$gender," ",$nameChild, "  élève dans votre collège, ne pourra pas assister au cours aujourd'hui.";
           if ($reason == "illness") {
               echo "<p> Son état de santé justifie cette absence. Le médecin lui a préconisé une période de repos.</p>";
