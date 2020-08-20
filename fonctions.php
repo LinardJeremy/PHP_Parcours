@@ -62,7 +62,16 @@ function replaceLetter($str){
 };
 echo replaceLetter($Wordtest);
 echo "<p>",replaceLetter($wordtest2),"</p>";
-
+$wordTest3 = "microsphæra";
+function replaceInverseLetter($str){
+    $find = "æ";
+    $pos = strpos($str,$find);
+    if ($pos>=0){
+        $str[$pos]="é";
+    }
+    return $str;
+}
+echo "<p>",replaceInverseLetter($wordTest3),"</p>";
 
 ?>
 </body>
