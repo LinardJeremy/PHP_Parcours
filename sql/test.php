@@ -50,7 +50,7 @@ $i=0;
 echo "<h1>If you click on the checkbox the element befo will be delete take care</h1>";
 $resultat = $bdd->query('SELECT * FROM météo');
 // $resultat = $bdd->query($requete);
-$donnees = $resultat->fetch();
+// $donnees = $resultat->fetch();
 echo "<form method='post' action='test.php'>";
 while ($donnees = $resultat->fetch())
 {
