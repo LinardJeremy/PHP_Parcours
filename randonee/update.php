@@ -31,9 +31,43 @@ while ($donnees = $resultat->fetch())
 	$height= $donnees['height_difference'];
 
 }
-$request = $bdd->exec("UPDATE hiking SET name='$name', difficulty='$difficulty',duration='$duration',distance=$distance,height_difference=$height  WHERE id=$id");
+if (isset($_POST['name'])) {
+	$name = $_POST['name'];
+	$distance = $_POST['distance'];
+	$duration = $_POST['duration'];
+	$difficulty = $_POST['difficulty'];
+	$height = $_POST['height_difference'];
+	$id = $_GET['id'];
+	$data = [
+		'name' => $name,
+		'difficulty' => $difficulty,
+		'distance' => $distance,
+		'duration' =>$distance,
+		'height_difference'=>$height,
+		'id' => $id,
+	];
+	$sql = "UPDATE hiking SET name=:name, difficulty=:difficulty, distance=:distance,duration=:duration,height_difference=:height_difference WHERE id=:id";
+	$stmt= $bdd->prepare($sql);
+	$stmt->execute($data);
+	echo "<h1>La randonée a bien été modifié <a href='read.php'>Cliquez ici</a> pour retourner à la page principale</h1>";
+}
 
 
+//  $request = $bdd->exec("UPDATE `hiking` SET `name`='$name', `difficulty`=$difficulty,`duration`=$duration,`distance`=$distance,`height_difference`=$height  WHERE `id`=$id");
+
+// $req = $bdd->prepare('UPDATE hiking (`name`, `difficulty`, `distance`,`duration`,`height_difference`) VALUES (:name,:difficulty,:distance,:duration,:height_difference)');
+// $req->execute(array(
+	// $data = [
+	// 	'name' => $name2,
+	// 	'difficulty' => $difficulty2,
+	// 	'distance' => $distance2,
+	// 	'duration' =>$distance2,
+	// 	'height_difference'=>$height2,
+	// 	'id' => $id2,
+	// ];
+	// $sql = "UPDATE hiking SET name=:name, difficulty=:difficulty, distance=:distance,duration=:duration,height_difference=:height_difference WHERE id=:id";
+	// $stmt= $bdd->prepare($sql);
+	// $stmt->execute($data);
 ?>
 <!DOCTYPE html>
 <html>
@@ -45,7 +79,8 @@ $request = $bdd->exec("UPDATE hiking SET name='$name', difficulty='$difficulty',
 <body>
 	<a href="/php-pdo/read.php">Liste des données</a>
 	<h1>Ajouter</h1>
-	<form action="" method="post">
+	<form <?php echo 'action="update.php?id=',$_GET['id'],'"' ?> method="post">
+	<!-- <form action="read.php"> -->
 		<div>
 			<label for="name">Name</label>
 			<input type="text" name="name" value=<?php echo "'",$name,"'"?>>
